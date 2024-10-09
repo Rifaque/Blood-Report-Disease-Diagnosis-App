@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration</title>
+  
+  <!-- Importing Google Fonts - Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    }
+
+    .container {
+      max-width: 700px;
+      width: 100%;
+      background-color: #fff;
+      padding: 25px 30px;
+      border-radius: 5px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+      position: relative;
+    }
+
+    .container .title {
+      font-size: 25px;
+      font-weight: 500;
+      position: relative;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .container .title::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      height: 3px;
+      width: 50px;
+      border-radius: 5px;
+      background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    }
+
+    .content form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Wrapper for the input fields */
+    .form-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .input-box {
+      flex: 1 1 calc(50% - 10px); /* Two columns */
+      min-width: 200px;
+    }
+
+    /* Full-width input (if needed) */
+    .input-box.full-width {
+      flex: 1 1 100%;
+      max-width: 50%;
+    }
+
+    form .input-box span.details {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+
+    .input-box input,
+    .input-box select {
+      height: 45px;
+      width: 100%;
+      outline: none;
+      font-size: 16px;
+      border-radius: 5px;
+      padding-left: 15px;
+      border: 1px solid #ccc;
+      border-bottom-width: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .input-box input:focus,
+    .input-box input:valid,
+    .input-box select:focus,
+    .input-box select:valid {
+      border-color: #9b59b6;
+    }
+
+    /* Styling for radio buttons */
+    .gender-details {
+      width: 100%;
+      margin: 20px 0;
+    }
+
+    .gender-details .gender-title {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .category {
+      display: flex;
+      width: 100%;
+      margin: 14px 0;
+      justify-content: space-between;
+    }
+
+    .category label {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+      padding-left: 35px;
+      user-select: none;
+      font-size: 16px;
+      width: 30%;
+    }
+
+    /* Hide the browser's default radio button */
+    .category label input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+
+    /* Create a custom radio button */
+    .checkmark {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 20px;
+      width: 20px;
+      background-color: #d9d9d9;
+      border-radius: 50%;
+      transition: background-color 0.3s ease;
+    }
+
+    /* When the radio button is checked, add a gradient background */
+    .category label input:checked ~ .checkmark {
+      background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    }
+
+    /* Add a dot inside the radio button when checked */
+    .checkmark::after {
+      content: "";
+      position: absolute;
+      display: none;
+      top: 6px;
+      left: 6px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: white;
+    }
+
+    .category label input:checked ~ .checkmark::after {
+      display: block;
+    }
+
+    /* Submit button */
+    .button {
+      height: 45px;
+      margin: 35px 0;
+    }
+
+    /* Styling for <button> element */
+    .button button,
+    .button input[type="submit"] {
+      height: 100%;
+      width: 100%;
+      border-radius: 5px;
+      border: none;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    }
+
+    .button button:hover,
+    .button input[type="submit"]:hover {
+      background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+    }
+
+    /* Login/Register links */
+    .login-link {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .login-link a {
+      color: #9b59b6;
+      text-decoration: none;
+      font-weight: 500;
+      margin: 0 10px;
+    }
+
+    .login-link a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive media query code for mobile devices */
+    @media (max-width: 768px) {
+      .input-box {
+        flex: 1 1 100%;
+      }
+    }
+
+    @media (max-width: 584px) {
+      .container {
+        max-width: 100%;
+      }
+
+      .category {
+        flex-direction: column;
+      }
+
+      .category label {
+        width: 100%;
+        padding-left: 0;
+        margin-bottom: 10px;
+      }
+
+      .checkmark {
+        margin-right: 10px;
+      }
+    }
+
+    @media (max-width: 459px) {
+      .container .content .category {
+        flex-direction: column;
+      }
+
+      .category label {
+        padding-left: 0;
+      }
+
+      .checkmark {
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Title section -->
+    <div class="title">Registration</div>
+    <div class="content">
+      <!-- Registration form -->
+      <form method="post" action="/register" onsubmit="return validateForm()">
+        <!-- Wrapper for the input fields -->
+        <div class="form-grid">
+          <!-- Input for Full Name -->
+          <div class="input-box">
+            <span class="details">Full Name</span>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+          </div>
+          <!-- Input for Username -->
+          <div class="input-box">
+            <span class="details">Username</span>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+          </div>
+          <!-- Input for Email -->
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+          </div>
+          <!-- Input for Phone Number -->
+          <div class="input-box">
+            <span class="details">Phone Number</span>
+            <input type="text" id="phone" name="phone" placeholder="Enter your number" required>
+          </div>
+          <!-- Input for Password -->
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required minlength="8">
+          </div>
+          <!-- Input for Confirm Password -->
+          <div class="input-box">
+            <span class="details">Confirm Password</span>
+            <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm your password" required minlength="8">
+          </div>
+          <!-- Input for Age -->
+          <div class="input-box">
+            <span class="details">Age</span>
+            <input type="number" id="age" name="age" placeholder="Enter your age" required>
+          </div>
+        </div>
+        <!-- Gender Selection -->
+        <div class="gender-details">
+          <span class="gender-title">Gender</span>
+          <div class="category">
+            <label for="male">
+              <input type="radio" name="gender" id="male" value="male" required>
+              <span class="checkmark"></span>
+              <span class="gender">Male</span>
+            </label>
+            <label for="female">
+              <input type="radio" name="gender" id="female" value="female" required>
+              <span class="checkmark"></span>
+              <span class="gender">Female</span>
+            </label>
+            <label for="prefer_not_to_say">
+              <input type="radio" name="gender" id="prefer_not_to_say" value="prefer_not_to_say" required>
+              <span class="checkmark"></span>
+              <span class="gender">Prefer not to say</span>
+            </label>
+          </div>
+        </div>
+        <!-- Submit button -->
+        <div class="button">
+          <input type="submit" value="Register">
+        </div>
+        <!-- Already have an account link -->
+        <div class="login-link">
+          Already have an account? <a href="/login">Login</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Validation Script -->
+  <script>
+    function validateForm() {
+      var password = document.getElementById("password").value;
+      var confirm_password = document.getElementById("confirm_password").value;
+
+      if (password !== confirm_password) {
+        alert("Password and confirm password must match.");
+        return false;
+      }
+
+      // Ensure all fields contain valid numerical values if needed
+      // Example: Validate phone number (basic check)
+      var phone = document.getElementById("phone").value;
+      var phonePattern = /^[0-9]{10,15}$/;
+      if (!phonePattern.test(phone)) {
+        alert("Please enter a valid phone number.");
+        return false;
+      }
+
+      // Additional validations can be added here
+
+      return true;
+    }
+  </script>
+</body>
+</html>

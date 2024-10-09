@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detection Result</title>
+  
+  <!-- Importing Google Fonts - Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    }
+
+    .container {
+      max-width: 700px;
+      width: 100%;
+      background-color: #fff;
+      padding: 25px 30px;
+      border-radius: 5px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+      position: relative;
+      text-align: center;
+    }
+
+    .container .title {
+      font-size: 25px;
+      font-weight: 500;
+      position: relative;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .container .title::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      height: 3px;
+      width: 50px;
+      border-radius: 5px;
+      background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    }
+
+    .result-section {
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+
+    .result-section h2 {
+      margin-bottom: 10px;
+      color: #9b59b6;
+    }
+
+    .result-section p {
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    .back-link {
+      margin-top: 20px;
+    }
+
+    .back-link a {
+      color: #9b59b6;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .back-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Title section -->
+    <div class="title">Detection Result</div>
+    <div class="result-section">
+      <h2>Detected Disease:</h2>
+      <p>{{ disease }}</p>
+      <h2>Possible Cause:</h2>
+      <p>{{ cause }}</p>
+    </div>
+    <div class="back-link">
+      <a href="/">Back to Detection</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User History</title>
+  
+  <!-- Importing Google Fonts - Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    }
+
+    .container {
+      max-width: 1300px;
+      width: 100%;
+      background-color: #fff;
+      padding: 25px 30px;
+      border-radius: 5px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+      position: relative;
+      text-align: center;
+    }
+
+    .container .title {
+      font-size: 25px;
+      font-weight: 500;
+      position: relative;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .container .title::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      height: 3px;
+      width: 50px;
+      border-radius: 5px;
+      background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+      background-color: #ffffff;
+    }
+
+    tr:hover {
+      background-color: #f2f2f2;
+    }
+
+    .back-link {
+      margin-top: 20px;
+    }
+
+    .back-link a {
+      color: #9b59b6;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .back-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Title section -->
+    <div class="title">User History</div>
+    
+    <!-- Table section -->
+    <table>
+      <thead>
+        <tr>
+          <th>WBC Count</th>
+          <th>RBC Count</th>
+          <th>Hemoglobin</th>
+          <th>Platelet Count</th>
+          <th>Neutrophils</th>
+          <th>Lymphocytes</th>
+          <th>Monocytes</th>
+          <th>Eosinophils</th>
+          <th>Basophils</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for record in history %}
+        <tr>
+          <td>{{ record.WBC }}</td>
+          <td>{{ record.RBC }}</td>
+          <td>{{ record.HGB }}</td>
+          <td>{{ record.PLT }}</td>
+          <td>{{ record.NEUT }}</td>
+          <td>{{ record.LYMPH }}</td>
+          <td>{{ record.MONO }}</td>
+          <td>{{ record.EO }}</td>
+          <td>{{ record.BASO }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <!-- Back link section -->
+    <div class="back-link">
+      <a href="{{ url_for('view_history') }}">Back to Detection</a>
+    </div>
+  </div>
+</body>
+</html>

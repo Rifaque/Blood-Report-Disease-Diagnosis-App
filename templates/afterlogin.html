@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Disease Detection</title>
+    
+    <!-- Importing Google Fonts - Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background-color: #fff;
+            padding: 25px 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+
+        .container .title {
+            font-size: 25px;
+            font-weight: 500;
+            position: relative;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .container .title::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            height: 3px;
+            width: 50px;
+            border-radius: 5px;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+        }
+
+        .content form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Wrapper for the first 9 inputs */
+        .form-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .input-box {
+            flex: 1 1 calc(50% - 10px); /* Two columns */
+            min-width: 200px;
+        }
+
+        /* Center the 9th input */
+        .input-box.full-width {
+            flex: 1 1 100%;
+            max-width: 50%;
+        }
+
+        form .input-box span.details {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .input-box input {
+            height: 45px;
+            width: 100%;
+            outline: none;
+            font-size: 16px;
+            border-radius: 5px;
+            padding-left: 15px;
+            border: 1px solid #ccc;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .input-box input:focus,
+        .input-box input:valid {
+            border-color: #9b59b6;
+        }
+
+        /* Button styling */
+/* Button styling */
+.button {
+    height: 45px;
+    margin: 10px 0; /* Small vertical space between buttons */
+}
+
+.button button {
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+.button button:hover {
+    background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+}
+
+
+        /* Login/Register links */
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .login-link a {
+            color: #9b59b6;
+            text-decoration: none;
+            font-weight: 500;
+            margin: 0 10px;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive media query code for mobile devices */
+        @media (max-width: 768px) {
+            .input-box {
+                flex: 1 1 100%;
+            }
+        }
+
+        @media (max-width: 584px) {
+            .container {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Title section -->
+        <div class="title">Blood Report Disease Detection</div>
+        <div class="content">
+            <!-- Disease Detection form -->
+            <form id="myForm" method="POST" onsubmit="return validateForm()">
+                <div class="form-grid">
+                    <div class="input-box">
+                        <span class="details">WBC Count</span>
+                        <input type="text" id="WBC" name="WBC" placeholder="Enter WBC Count" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">RBC Count</span>
+                        <input type="text" id="RBC" name="RBC" placeholder="Enter RBC Count" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Hemoglobin</span>
+                        <input type="text" id="HGB" name="HGB" placeholder="Enter Hemoglobin Level" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Platelet Count</span>
+                        <input type="text" id="PLT" name="PLT" placeholder="Enter Platelet Count" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Neutrophils</span>
+                        <input type="text" id="NEUT" name="NEUT" placeholder="Enter Neutrophils Count" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Lymphocytes</span>
+                        <input type="text" id="LYMPH" name="LYMPH" placeholder="Enter Lymphocytes Count" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Monocytes</span>
+                        <input type="text" id="MONO" name="MONO" placeholder="Enter Monocytes Count" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Eosinophils</span>
+                        <input type="text" id="EO" name="EO" placeholder="Enter Eosinophils Count" required>
+                    </div>
+                </div>
+                <div class="input-box full-width">
+                    <span class="details">Basophils</span>
+                    <input type="text" id="BASO" name="BASO" placeholder="Enter Basophils Count" required>
+                </div>
+                <div class="button">
+                    <button type="submit">Submit</button>
+                </div>
+                <div class="button">
+                    <button type="button" onclick="saveData()">Save Data</button>
+                </div>
+                
+                <div class="login-link">
+                    <a href="/view_history">History</a> | <a href="/logout">Logout</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function saveData() {
+            var formData = new FormData(document.getElementById("myForm"));
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/save_data");
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    alert("Data saved successfully!");
+                } else {
+                    alert("Failed to save data.");
+                }
+            };
+            xhr.send(formData);
+        }
+
+        function validateForm() {
+            const fields = ['WBC', 'RBC', 'HGB', 'PLT', 'NEUT', 'LYMPH', 'MONO', 'EO', 'BASO'];
+            for (let field of fields) {
+                const value = document.getElementById(field).value;
+                if (isNaN(value) || value.trim() === '') {
+                    alert(`Please enter a valid number for ${field}.`);
+                    return false;
+                }
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
