@@ -6,7 +6,7 @@ from sklearn.model_selection import train_test_split
 import sqlite3
 
 app = Flask(__name__)
-app.secret_key = 'Pra__chi'
+app.secret_key = 'Hub_Zero'
 
 # Load the main dataset
 df_main = pd.read_csv("Training.csv")
